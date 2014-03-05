@@ -1,0 +1,9 @@
+
+body
+  background-color: white
+  color: red
+  transform: background-color 300ms ease-out
+  &.active
+    background-color: blue
+    &::before
+      content: 'Page is Active'
