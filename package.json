@@ -38,6 +38,7 @@
   },
   "devDependencies": {
     "mocha": "*",
-    "rework-calc": "~0.2.1"
+    "rework-calc": "~0.2.1",
+    "gulp": "~3.5.5"
   }
 }
