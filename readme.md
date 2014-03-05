@@ -1,9 +1,7 @@
-# [gulp](https://github.com/wearefractal/gulp)-styl [![Build Status](https://secure.travis-ci.org/sindresorhus/gulp-styl.png?branch=master)](http://travis-ci.org/sindresorhus/gulp-styl)
+gulp-style
+----------
 
-> Preprocess CSS with [Styl](https://github.com/visionmedia/styl)
-
-*Issues with the output should be reported on the [Styl issue tracker](https://github.com/visionmedia/styl/issues).*
-
+Preprocess CSS with [Styl](https://github.com/visionmedia/styl)
 
 ## Install
 
@@ -12,7 +10,6 @@ Install with [npm](https://npmjs.org/package/gulp-styl)
 ```
 npm install --save-dev gulp-styl
 ```
-
 
 ## Example
 
@@ -45,6 +42,50 @@ Default: `false`
 
 Utilize CSS [whitespace transformations](https://github.com/visionmedia/styl#whitespace-significant-syntax).
 
+## Example
+
+Be sure gulp-jade depedencies are donwloaded (`npm install`) and into
+`example/` folder:
+
+```bash
+$ npm install -g gulp
+$ npm install gulp --save-dev
+$ gulp
+```
+
+### main.styl
+
+```styl
+body
+  background-color: white
+  color: red
+  transform: background-color 300ms ease-out
+  &.active
+    background-color: blue
+    &::before
+      content: 'Page is Active'
+```
+
+### copiled ./dist/main.css
+
+```css
+body {
+  background-color: white;
+  color: red;
+  -ms-transform: background-color 300ms ease-out;
+  -moz-transform: background-color 300ms ease-out;
+  -webkit-transform: background-color 300ms ease-out;
+  transform: background-color 300ms ease-out;
+}
+
+body.active::before {
+  content: 'Page is Active';
+}
+
+body.active {
+  background-color: blue;
+}
+```
 
 ## License
 
