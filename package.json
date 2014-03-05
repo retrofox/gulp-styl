@@ -1,5 +1,5 @@
 {
-  "name": "gulp-styl",
+  "name": "retro-gulp-styl",
   "version": "0.3.0",
   "description": "Preprocess CSS with Styl",
   "license": "MIT",
