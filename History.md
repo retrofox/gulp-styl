@@ -1,4 +1,11 @@
 
+0.3.1 / 2014-03-05 
+==================
+
+  * core: get plugins and options arguments
+  * pkg: remove lodash dependency
+  * add example
+
 0.3.0 / 2014-03-03 
 ==================
 
