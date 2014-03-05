@@ -4,25 +4,24 @@
  * Module dependencies
  */
 
-var _ = require('lodash');
 var gutil = require('gulp-util');
 var through = require('through2');
 var styl = require('styl');
-
-/**
- * Alias
- */
-
-var lastIsObject = _.compose(_.isPlainObject, _.last);
 
 /**
  * Export function
  */
 
 module.exports = function () {
-  var args = [].slice.call(arguments);
-  var options = lastIsObject(args) ? args.pop() : {};
-  var plugins = args;
+  // get plugins and options
+  var plugins = [].slice.call(arguments);
+  var options = plugins[plugins.length - 1];
+
+  if ('object' !== typeof options) {
+    options = {};
+  } else {
+    plugins.pop();
+  }
 
   return through.obj(function (file, enc, cb) {
     if (file.isNull()) {
