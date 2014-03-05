@@ -14,6 +14,7 @@ var styl = require('../');
 gulp.task('css', function () {
   gulp.src('./*.styl')
     .pipe(styl({
+      compress: true,
       whitespace: true
     }))
     .pipe(gulp.dest('./dist'));
