@@ -16,31 +16,51 @@ npm install --save-dev gulp-styl
 ```js
 var gulp = require('gulp');
 var styl = require('gulp-styl');
-var inline = require('rework-inline');
 
 gulp.task('default', function () {
-	gulp.src('src/app.css')
-		.pipe(styl(inline()))
-		.pipe(gulp.dest('dist'));
+  gulp
+    .src('src/app.css')
+    .pipe(styl(inline()))
+    .pipe(gulp.dest('dist'));
 });
 ```
 
-
 ## API
-
-The `compress` option from Styl is intentionally missing. A separate task like [gulp-csso](https://github.com/ben-eb/gulp-csso) will do a much better job.
 
 ### styl(plugin, plugin, ..., options)
 
 Plugins are supplied as arguments.
 Optionally supply an object with options as the last argument.
 
-#### options.whitespace
+### Add plugins
 
-Type: `Boolean`  
-Default: `false`
+```js
+var gulp = require('gulp');
+var styl = require('gulp-styl');
+var inline = require('rework-inline');
 
-Utilize CSS [whitespace transformations](https://github.com/visionmedia/styl#whitespace-significant-syntax).
+gulp.task('default', function () {
+  gulp.src('src/app.css')
+    .pipe(styl(inline()))
+    .pipe(gulp.dest('dist'));
+});
+```
+
+### `compress` and `whitespace` support
+
+```js
+var gulp = require('gulp');
+var styl = require('gulp-styl');
+
+gulp.task('default', function () {
+  gulp.src('src/app.css')
+    .pipe(styl({
+      compress: true,
+      whitespace: true
+    }))
+    .pipe(gulp.dest('dist'));
+});
+```
 
 ## Example
 
@@ -69,22 +89,7 @@ body
 ### copiled ./dist/main.css
 
 ```css
-body {
-  background-color: white;
-  color: red;
-  -ms-transform: background-color 300ms ease-out;
-  -moz-transform: background-color 300ms ease-out;
-  -webkit-transform: background-color 300ms ease-out;
-  transform: background-color 300ms ease-out;
-}
-
-body.active::before {
-  content: 'Page is Active';
-}
-
-body.active {
-  background-color: blue;
-}
+body{background-color:white;color:red;-ms-transform:background-color 300ms ease-out;-moz-transform:background-color 300ms ease-out;-webkit-transform:background-color 300ms ease-out;transform:background-color 300ms ease-out;}body.active::before{content:'Page is Active';}body.active{background-color:blue;}
 ```
 
 ## License
