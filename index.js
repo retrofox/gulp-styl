@@ -1,9 +1,23 @@
 'use strict';
+
+/**
+ * Module dependencies
+ */
+
 var _ = require('lodash');
 var gutil = require('gulp-util');
-var lastIsObject = _.compose(_.isPlainObject, _.last);
 var through = require('through2');
 var styl = require('styl');
+
+/**
+ * Alias
+ */
+
+var lastIsObject = _.compose(_.isPlainObject, _.last);
+
+/**
+ * Export function
+ */
 
 module.exports = function () {
   var args = [].slice.call(arguments);
@@ -17,7 +31,8 @@ module.exports = function () {
     }
 
     if (file.isStream()) {
-      this.emit('error', new gutil.PluginError('gulp-styl', 'Streaming not supported'));
+      var err = new gutil.PluginError('gulp-styl', 'Streaming not supported');
+      this.emit('error', err);
       return cb();
     }
 
